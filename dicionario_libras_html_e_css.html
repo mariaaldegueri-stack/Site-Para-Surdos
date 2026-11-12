@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevLibras - Dicionário Interativo de HTML & CSS</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts - Lexend -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandAzul: '#1E40AF',
+                        brandAmarelo: '#FACC15',
+                        brandVermelho: '#EF4444',
+                        brandVerde: '#10B981',
+                        brandLaranja: '#F97316',
+                    },
+                    fontFamily: {
+                        sans: ['Lexend', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+            background-color: #F8FAFC;
+        }
+        .card-bounce {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card-bounce:hover {
+            transform: translateY(-5px);
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3B82F6;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- VLibras Widget Integration -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+    <!-- Header Principal -->
+    <header class="bg-gradient-to-r from-brandAzul via-blue-700 to-indigo-900 text-white shadow-xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-brandAmarelo text-slate-900 p-3 rounded-2xl font-black text-2xl shadow-lg border-2 border-white">
+                    🤟 DevLibras
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-extrabold tracking-wide text-white">Dicionário Visual Tech</h1>
+                    <p class="text-xs md:text-sm text-yellow-300 font-medium">Acessível • Visual • Interativo</p>
+                </div>
+            </div>
+
+            <!-- Navegação -->
+            <nav class="flex flex-wrap gap-2 sm:gap-3">
+                <a href="#dicionario" class="px-4 py-2 bg-brandLaranja hover:bg-orange-600 text-white font-bold rounded-xl shadow-md transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-book-open"></i> Dicionário
+                </a>
+                <a href="#playground" class="px-4 py-2 bg-brandVerde hover:bg-emerald-600 text-white font-bold rounded-xl shadow-md transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-code"></i> Editor Vivo
+                </a>
+                <a href="#quiz" class="px-4 py-2 bg-brandAmarelo hover:bg-yellow-500 text-slate-900 font-bold rounded-xl shadow-md transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-gamepad"></i> Quiz
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner Acessibilidade / LIBRAS Info -->
+    <section class="bg-yellow-100 border-b-4 border-brandAmarelo p-4 text-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <span class="text-3xl">👋</span>
+                <p class="font-semibold text-sm md:text-base">
+                    <strong class="text-brandAzul">Bem-vindo(a)!</strong> Use o widget azul na lateral direita para ativar o assistente em <span class="bg-yellow-300 px-2 py-0.5 rounded font-bold">LIBRAS</span> a qualquer momento!
+                </p>
+            </div>
+            <div class="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-slate-600 bg-white px-3 py-1.5 rounded-lg border border-yellow-300">
+                <i class="fa-solid fa-universal-access text-brandAzul text-base"></i> 100% Acessível
+            </div>
+        </div>
+    </section>
+
+    <!-- Conteúdo Principal -->
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-grow space-y-16">
+
+        <!-- Intro Hero -->
+        <section class="text-center py-6">
+            <h2 class="text-3xl md:text-5xl font-black text-brandAzul mb-4">
+                Aprenda <span class="text-brandVermelho bg-red-100 px-3 py-1 rounded-2xl border-2 border-red-300">HTML</span> & <span class="text-brandAzul bg-blue-100 px-3 py-1 rounded-2xl border-2 border-blue-300">CSS</span> de forma Visual!
+            </h2>
+            <p class="text-slate-600 max-w-2xl mx-auto text-base md:text-lg">
+                Um guia interativo projetado para a comunidade surda, combinando analogias visuais, código prático e acessibilidade.
+            </p>
+        </section>
+
+        <!-- Seção Dicionário -->
+        <section id="dicionario" class="scroll-mt-24 space-y-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 bg-white p-6 rounded-3xl shadow-sm border border-slate-200">
+                <div>
+                    <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                        <i class="fa-solid fa-bookmark text-brandLaranja"></i> Dicionário de Termos
+                    </h3>
+                    <p class="text-slate-500 text-sm">Pesquise ou filtre os conceitos fundamentais da web.</p>
+                </div>
+
+                <!-- Filtros & Pesquisa -->
+                <div class="flex flex-wrap gap-2 w-full md:w-auto">
+                    <div class="relative flex-grow md:flex-grow-0">
+                        <input type="text" id="searchInput" placeholder="Pesquisar termo..." class="w-full md:w-64 pl-10 pr-4 py-2 border-2 border-slate-300 rounded-xl focus:border-brandAzul focus:outline-none">
+                        <i class="fa-solid fa-search absolute left-3 top-3 text-slate-400"></i>
+                    </div>
+                    <button onclick="filterCategory('todos')" class="filter-btn active px-4 py-2 rounded-xl font-bold text-sm bg-slate-800 text-white transition-all">Todos</button>
+                    <button onclick="filterCategory('html')" class="filter-btn px-4 py-2 rounded-xl font-bold text-sm bg-red-500 text-white hover:bg-red-600 transition-all">HTML</button>
+                    <button onclick="filterCategory('css')" class="filter-btn px-4 py-2 rounded-xl font-bold text-sm bg-blue-600 text-white hover:bg-blue-700 transition-all">CSS</button>
+                </div>
+            </div>
+
+            <!-- Grid do Dicionário -->
+            <div id="dictionaryGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Inserido dinamicamente via Javascript -->
+            </div>
+        </section>
+
+        <!-- Playground / Editor Vivo -->
+        <section id="playground" class="scroll-mt-24 bg-slate-900 text-white p-6 md:p-8 rounded-3xl shadow-2xl space-y-6 border-4 border-brandVerde">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-700 pb-4">
+                <div>
+                    <span class="bg-brandVerde text-slate-950 font-black text-xs px-3 py-1 rounded-full uppercase tracking-wider">Laboratório Prático</span>
+                    <h3 class="text-2xl md:text-3xl font-black text-white mt-1">Editor de Código em Tempo Real</h3>
+                    <p class="text-slate-400 text-sm">Altere o código HTML e CSS para ver as mudanças instantaneamente!</p>
+                </div>
+                <button onclick="resetPlayground()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-xl text-sm font-bold text-yellow-400 flex items-center gap-2">
+                    <i class="fa-solid fa-rotate-right"></i> Restaurar Código
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Entradas de Código -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-red-400 mb-2 flex items-center gap-2">
+                            <i class="fa-brands fa-html5 text-lg"></i> Código HTML
+                        </label>
+                        <textarea id="htmlInput" rows="5" class="w-full bg-slate-950 text-emerald-400 font-mono text-sm p-4 rounded-xl border border-slate-800 focus:border-brandVerde focus:outline-none shadow-inner" spellcheck="false"><div class="caixa">
+  <h2>Olá, Mundo! 🤟</h2>
+  <p>Estou aprendendo HTML e CSS com LIBRAS!</p>
+</div></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-blue-400 mb-2 flex items-center gap-2">
+                            <i class="fa-brands fa-css3-alt text-lg"></i> Código CSS
+                        </label>
+                        <textarea id="cssInput" rows="6" class="w-full bg-slate-950 text-cyan-400 font-mono text-sm p-4 rounded-xl border border-slate-800 focus:border-brandVerde focus:outline-none shadow-inner" spellcheck="false">.caixa {
+  background-color: #FACC15;
+  color: #1E40AF;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  border: 4px solid #1E40AF;
+}</textarea>
+                    </div>
+                </div>
+
+                <!-- Painel de Preview -->
+                <div class="flex flex-col">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-yellow-400 mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-desktop text-lg"></i> Resultado Visual (Output)
+                    </label>
+                    <div class="flex-grow bg-white rounded-xl overflow-hidden min-h-[250px] border-4 border-slate-700 shadow-inner">
+                        <iframe id="previewFrame" class="w-full h-full min-h-[280px]"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Interativo -->
+        <section id="quiz" class="scroll-mt-24 bg-gradient-to-br from-indigo-50 to-blue-50 border-4 border-brandAzul p-6 md:p-8 rounded-3xl shadow-lg space-y-6">
+            <div class="text-center max-w-xl mx-auto">
+                <span class="bg-brandAmarelo text-slate-900 font-black text-xs px-3 py-1 rounded-full uppercase tracking-wider border border-yellow-500">Desafio Visual</span>
+                <h3 class="text-3xl font-black text-brandAzul mt-2">Quiz: Teste seus Conhecimentos!</h3>
+                <p class="text-slate-600 text-sm mt-1">Responda às questões e receba feedback imediato.</p>
+            </div>
+
+            <div id="quizContainer" class="max-w-2xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-md border border-slate-200">
+                <!-- Gerado por JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-slate-900 text-white mt-16 border-t-8 border-brandAmarelo">
+        <div class="max-w-7xl mx-auto px-4 py-8 text-center space-y-4">
+            <div class="flex justify-center items-center gap-2 text-2xl font-black text-brandAmarelo">
+                🤟 DevLibras
+            </div>
+            <p class="text-slate-400 text-sm max-w-md mx-auto">
+                Plataforma de ensino inclusiva desenvolvida para apoiar o aprendizado em tecnologia para a comunidade surda.
+            </p>
+            <div class="flex justify-center gap-4 text-xs font-bold text-slate-500 uppercase tracking-wider">
+                <span class="bg-slate-800 px-3 py-1 rounded-lg">HTML5</span>
+                <span class="bg-slate-800 px-3 py-1 rounded-lg">CSS3</span>
+                <span class="bg-slate-800 px-3 py-1 rounded-lg">LIBRAS</span>
+            </div>
+            <p class="text-xs text-slate-600">Desenvolvido para aprendizado prático e acessível.</p>
+        </div>
+    </footer>
+
+    <!-- Lógica JavaScript -->
+    <script>
+        const dictionaryData = [
+            {
+                id: 'html',
+                category: 'html',
+                title: 'HTML',
+                tag: 'Estrutura Básica',
+                badgeBg: 'bg-red-500',
+                borderBg: 'border-red-500',
+                icon: 'fa-brands fa-html5',
+                iconColor: 'text-red-500',
+                visualAnalogy: '🦴 Estrutura / Esqueleto',
+                description: 'O HTML é a estrutura primária de qualquer página da web. Assim como o esqueleto sustenta o corpo, o HTML dá suporte aos textos, imagens e componentes.',
+                example: '<h1>Meu Título</h1>\n<p>Meu texto aqui.</p>'
+            },
+            {
+                id: 'css',
+                category: 'css',
+                title: 'CSS',
+                tag: 'Estilo & Design',
+                badgeBg: 'bg-blue-600',
+                borderBg: 'border-blue-600',
+                icon: 'fa-brands fa-css3-alt',
+                iconColor: 'text-blue-600',
+                visualAnalogy: '🎨 Roupas e Cores',
+                description: 'O CSS define a aparência visual do site. Ele gerencia cores, tamanhos, espaçamentos, tipografia e layouts responsivos.',
+                example: 'body {\n  background-color: blue;\n  color: yellow;\n}'
+            },
+            {
+                id: 'tags',
+                category: 'html',
+                title: 'Tags (<...>)',
+                tag: 'Elementos HTML',
+                badgeBg: 'bg-red-500',
+                borderBg: 'border-red-500',
+                icon: 'fa-solid fa-code',
+                iconColor: 'text-red-500',
+                visualAnalogy: '📦 Caixas Etiquetadas',
+                description: 'As tags sinalizam ao navegador o tipo de conteúdo. A maioria das tags possui abertura (<tag>) e fechamento (</tag>).',
+                example: '<button>Clique Aqui</button>'
+            },
+            {
+                id: 'atributos',
+                category: 'html',
+                title: 'Atributos',
+                tag: 'Propriedades HTML',
+                badgeBg: 'bg-red-500',
+                borderBg: 'border-red-500',
+                icon: 'fa-solid fa-sliders',
+                iconColor: 'text-red-500',
+                visualAnalogy: '🏷️ Detalhes e Ajustes',
+                description: 'Fornecem informações adicionais às tags HTML para alterar suas propriedades ou comportamentos.',
+                example: '<img src="foto.jpg" alt="Foto demonstrativa">'
+            },
+            {
+                id: 'color',
+                category: 'css',
+                title: 'Color & Background',
+                tag: 'Cores CSS',
+                badgeBg: 'bg-blue-600',
+                borderBg: 'border-blue-600',
+                icon: 'fa-solid fa-palette',
+                iconColor: 'text-blue-600',
+                visualAnalogy: '🖌️ Pintura Visual',
+                description: 'Instruções para alterar a cor da fonte (color) e a cor do fundo do elemento (background-color).',
+                example: 'h1 {\n  color: #EF4444;\n  background-color: #FACC15;\n}'
+            },
+            {
+                id: 'margin-padding',
+                category: 'css',
+                title: 'Margin & Padding',
+                tag: 'Espaçamentos',
+                badgeBg: 'bg-blue-600',
+                borderBg: 'border-blue-600',
+                icon: 'fa-solid fa-arrows-up-down-left-right',
+                iconColor: 'text-blue-600',
+                visualAnalogy: '📏 Distância Interna e Externa',
+                description: 'Margin adiciona espaço externo (ao redor do elemento). Padding adiciona espaço interno (dentro da borda).',
+                example: '.caixa {\n  margin: 20px;  /* Fora */\n  padding: 10px; /* Dentro */\n}'
+            },
+            {
+                id: 'flexbox',
+                category: 'css',
+                title: 'Flexbox',
+                tag: 'Layouts CSS',
+                badgeBg: 'bg-blue-600',
+                borderBg: 'border-blue-600',
+                icon: 'fa-solid fa-table-cells-large',
+                iconColor: 'text-blue-600',
+                visualAnalogy: '🧩 Alinhamento Dinâmico',
+                description: 'Recurso moderno do CSS para organizar elementos em linhas ou colunas de maneira flexível e alinhada.',
+                example: '.conteudo {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}'
+            },
+            {
+                id: 'doctype',
+                category: 'html',
+                title: '<!DOCTYPE html>',
+                tag: 'Declaração',
+                badgeBg: 'bg-red-500',
+                borderBg: 'border-red-500',
+                icon: 'fa-solid fa-flag',
+                iconColor: 'text-red-500',
+                visualAnalogy: '📜 Tipo do Documento',
+                description: 'Instrução inicial que informa ao navegador da web que o arquivo segue o padrão moderno do HTML5.',
+                example: '<!DOCTYPE html>\n<html>\n  ...\n</html>'
+            }
+        ];
+
+        function renderDictionary(data) {
+            const grid = document.getElementById('dictionaryGrid');
+            grid.innerHTML = '';
+
+            if (data.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-dashed border-slate-300">
+                        <i class="fa-solid fa-face-meh text-4xl text-slate-400 mb-2"></i>
+                        <p class="text-slate-500 font-bold">Nenhum termo encontrado.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.className = `bg-white rounded-3xl p-6 shadow-md border-t-8 ${item.borderBg} card-bounce flex flex-col justify-between space-y-4`;
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="${item.badgeBg} text-white font-black text-xs px-3 py-1 rounded-full uppercase tracking-wider">
+                                ${item.tag}
+                            </span>
+                            <i class="${item.icon} ${item.iconColor} text-3xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-black text-slate-800 mb-1">${item.title}</h4>
+                        <div class="inline-block bg-yellow-100 text-yellow-800 text-xs font-bold px-2.5 py-1 rounded-lg mb-3">
+                            ${item.visualAnalogy}
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed">${item.description}</p>
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Exemplo de Código:</div>
+                        <pre class="bg-slate-900 text-emerald-400 font-mono text-xs p-3 rounded-xl overflow-x-auto"><code>${escapeHtml(item.example)}</code></pre>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function filterCategory(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active', 'ring-4', 'ring-slate-300'));
+            if (event) {
+                event.target.classList.add('active', 'ring-4', 'ring-slate-300');
+            }
+
+            if (category === 'todos') {
+                renderDictionary(dictionaryData);
+            } else {
+                const filtered = dictionaryData.filter(item => item.category === category);
+                renderDictionary(filtered);
+            }
+        }
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const value = e.target.value.toLowerCase();
+            const filtered = dictionaryData.filter(item => 
+                item.title.toLowerCase().includes(value) || 
+                item.description.toLowerCase().includes(value) ||
+                item.tag.toLowerCase().includes(value)
+            );
+            renderDictionary(filtered);
+        });
+
+        // Playground
+        const htmlInput = document.getElementById('htmlInput');
+        const cssInput = document.getElementById('cssInput');
+        const previewFrame = document.getElementById('previewFrame');
+
+        function updatePreview() {
+            const html = htmlInput.value;
+            const css = `<style>${cssInput.value}</style>`;
+            const combinedContent = `<!DOCTYPE html><html><head>${css}</head><body style="margin:10px; font-family:sans-serif;">${html}</body></html>`;
+            
+            const iframeDoc = previewFrame.contentDocument || previewFrame.contentWindow.document;
+            iframeDoc.open();
+            iframeDoc.write(combinedContent);
+            iframeDoc.close();
+        }
+
+        htmlInput.addEventListener('input', updatePreview);
+        cssInput.addEventListener('input', updatePreview);
+
+        function resetPlayground() {
+            htmlInput.value = `<div class="caixa">\n  <h2>Olá, Mundo! 🤟</h2>\n  <p>Estou aprendendo HTML e CSS com LIBRAS!</p>\n</div>`;
+            cssInput.value = `.caixa {\n  background-color: #FACC15;\n  color: #1E40AF;\n  padding: 20px;\n  border-radius: 15px;\n  text-align: center;\n  border: 4px solid #1E40AF;\n}`;
+            updatePreview();
+        }
+
+        // Quiz
+        const quizQuestions = [
+            {
+                question: 'Qual linguagem é responsável por criar a ESTRUTURA da página?',
+                options: [
+                    { text: 'HTML', correct: true, icon: '🦴' },
+                    { text: 'CSS', correct: false, icon: '🎨' },
+                    { text: 'JavaScript', correct: false, icon: '⚡' }
+                ]
+            },
+            {
+                question: 'Qual propriedade CSS altera a COR DE FUNDO de um elemento?',
+                options: [
+                    { text: 'color', correct: false, icon: '✏️' },
+                    { text: 'background-color', correct: true, icon: '🖌️' },
+                    { text: 'font-size', correct: false, icon: '🔤' }
+                ]
+            },
+            {
+                question: 'O que o recurso MARGIN faz no CSS?',
+                options: [
+                    { text: 'Espaço interno na caixa', correct: false, icon: '📥' },
+                    { text: 'Espaço externo ao redor do elemento', correct: true, icon: '↔️' },
+                    { text: 'Altera o tipo da fonte', correct: false, icon: '🔤' }
+                ]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function renderQuiz() {
+            const container = document.getElementById('quizContainer');
+            
+            if (currentQuestion >= quizQuestions.length) {
+                container.innerHTML = `
+                    <div class="text-center space-y-4 py-6">
+                        <div class="text-6xl">🎉</div>
+                        <h4 class="text-2xl font-black text-brandAzul">Parabéns! Quiz Concluído!</h4>
+                        <p class="text-lg font-bold text-slate-700">Sua pontuação: <span class="text-brandVerde text-2xl font-black">${score} / ${quizQuestions.length}</span></p>
+                        <button onclick="restartQuiz()" class="px-6 py-3 bg-brandAzul hover:bg-blue-800 text-white font-bold rounded-2xl shadow-lg transition-all">
+                            <i class="fa-solid fa-rotate-left"></i> Tentar Novamente
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            const q = quizQuestions[currentQuestion];
+            container.innerHTML = `
+                <div class="space-y-6">
+                    <div class="flex justify-between items-center text-xs font-bold text-slate-400 border-b border-slate-100 pb-2">
+                        <span>PERGUNTA ${currentQuestion + 1} DE ${quizQuestions.length}</span>
+                        <span class="bg-blue-100 text-brandAzul px-2.5 py-1 rounded-full">Pontos: ${score}</span>
+                    </div>
+
+                    <h4 class="text-xl font-bold text-slate-800">${q.question}</h4>
+
+                    <div class="grid grid-cols-1 gap-3">
+                        ${q.options.map(opt => `
+                            <button onclick="checkAnswer(${opt.correct})" class="w-full text-left p-4 rounded-xl border-2 border-slate-200 hover:border-brandAzul hover:bg-blue-50 transition-all font-semibold flex items-center justify-between group">
+                                <span class="flex items-center gap-3">
+                                    <span class="text-2xl">${opt.icon}</span>
+                                    <span class="text-slate-700 group-hover:text-brandAzul">${opt.text}</span>
+                                </span>
+                                <i class="fa-solid fa-chevron-right text-slate-300 group-hover:text-brandAzul"></i>
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function checkAnswer(isCorrect) {
+            if (isCorrect) score++;
+            currentQuestion++;
+            renderQuiz();
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            renderQuiz();
+        }
+
+        window.onload = function() {
+            renderDictionary(dictionaryData);
+            updatePreview();
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>
